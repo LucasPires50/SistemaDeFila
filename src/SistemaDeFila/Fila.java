@@ -5,6 +5,7 @@
  */
 package SistemaDeFila;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,11 +20,13 @@ public class Fila extends javax.swing.JFrame {
      */
     //criou uma variavel com a tributo de classe
     private List<String> fila;
-    
+    private int contador;
+
     public Fila() {
         initComponents();
         //inicialisou a fila
         this.fila = new LinkedList();
+        this.contador = 0;
     }
 
     /**
@@ -41,6 +44,12 @@ public class Fila extends javax.swing.JFrame {
         cpNome = new javax.swing.JTextField();
         btnIncluirCliente = new javax.swing.JButton();
         btnChamarCliente = new javax.swing.JButton();
+        labelUltimoClienteChamado = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        labelFila = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        labelUltimoChamado2 = new javax.swing.JLabel();
+        labelUltimoChamado3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 255, 102));
@@ -55,6 +64,7 @@ public class Fila extends javax.swing.JFrame {
         labelProximo.setText("Proximo:");
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
         btnIncluirCliente.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnIncluirCliente.setText("Incluir Cliente");
@@ -73,25 +83,51 @@ public class Fila extends javax.swing.JFrame {
             }
         });
 
+        labelUltimoClienteChamado.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        labelUltimoClienteChamado.setText("(ultimo cliente chamando 1)");
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+
+        labelFila.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        labelFila.setText("(fila)");
+
+        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+
+        labelUltimoChamado2.setText("(ultimo cliente chamando 2)");
+
+        labelUltimoChamado3.setText("(ultimo cliente chamando 2)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnChamarCliente)
-                .addGap(160, 160, 160))
             .addComponent(jSeparator1)
+            .addComponent(jSeparator2)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelChamada, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelProximo)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(188, 188, 188)
+                            .addComponent(btnChamarCliente)
+                            .addGap(52, 52, 52))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(cpNome, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnIncluirCliente)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cpNome, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelUltimoClienteChamado)
                         .addGap(18, 18, 18)
-                        .addComponent(btnIncluirCliente)))
-                .addContainerGap(11, Short.MAX_VALUE))
+                        .addComponent(labelUltimoChamado2)
+                        .addGap(18, 18, 18)
+                        .addComponent(labelUltimoChamado3))
+                    .addComponent(labelFila))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,11 +140,22 @@ public class Fila extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelUltimoClienteChamado)
+                    .addComponent(labelUltimoChamado2)
+                    .addComponent(labelUltimoChamado3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(labelFila)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cpNome, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIncluirCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnChamarCliente)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -118,22 +165,42 @@ public class Fila extends javax.swing.JFrame {
         //criaou a variavel e vinculou ou campo cpNome, .trim sem espaços desnecessários
         String nome = cpNome.getText().trim();
         cpNome.setText("");
-        
+
         //a pessoa foi incluida na fila
         this.fila.add(nome);
     }//GEN-LAST:event_btnIncluirClienteActionPerformed
 
     private void btnChamarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChamarClienteActionPerformed
-        //chama o proximo cliente da fila e remove ele
-        String nome = this.fila.get(0);
-        this.fila.remove(0);
-        
-        labelChamada.setText(nome);
-        
-      
-        
-    
-        
+
+        //se o tamanho da fila for maior que zero, para não exceder o index
+        if (this.fila.size() > 0) {
+            //chama o proximo cliente da fila e remove ele
+            String nome = this.fila.get(0);
+            this.fila.remove(0);
+
+            labelChamada.setText(nome);
+
+            contador++;
+            if (contador == 1) {
+                labelUltimoClienteChamado.setText(nome);
+            }
+            if (contador == 2) {
+
+                labelUltimoChamado2.setText(nome);
+            }
+            if (contador == 3) {
+                labelUltimoChamado3.setText(nome);
+                contador = 0;
+            }
+
+            String filaDePessoas = "";
+            for (int i = 0; i < this.fila.size(); i++) {
+                //concatenar para mostrar toda a fila
+                filaDePessoas = filaDePessoas + "," + this.fila.get(i);
+            }
+            labelFila.setText(filaDePessoas);
+        }
+
         //faz o barulho do bit na hora da chamada
         java.awt.Toolkit.getDefaultToolkit().beep();
     }//GEN-LAST:event_btnChamarClienteActionPerformed
@@ -178,7 +245,13 @@ public class Fila extends javax.swing.JFrame {
     private javax.swing.JButton btnIncluirCliente;
     private javax.swing.JTextField cpNome;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel labelChamada;
+    private javax.swing.JLabel labelFila;
     private javax.swing.JLabel labelProximo;
+    private javax.swing.JLabel labelUltimoChamado2;
+    private javax.swing.JLabel labelUltimoChamado3;
+    private javax.swing.JLabel labelUltimoClienteChamado;
     // End of variables declaration//GEN-END:variables
 }
