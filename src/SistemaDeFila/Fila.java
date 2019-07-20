@@ -179,7 +179,7 @@ public class Fila extends javax.swing.JFrame {
             this.fila.remove(0);
 
             labelChamada.setText(nome);
-
+            //para mostar os últimos 3 chamdos 
             contador++;
             if (contador == 1) {
                 labelUltimoClienteChamado.setText(nome);
@@ -192,7 +192,7 @@ public class Fila extends javax.swing.JFrame {
                 labelUltimoChamado3.setText(nome);
                 contador = 0;
             }
-
+            //para mostrar todas as pessoas da fila
             String filaDePessoas = "";
             for (int i = 0; i < this.fila.size(); i++) {
                 //concatenar para mostrar toda a fila
